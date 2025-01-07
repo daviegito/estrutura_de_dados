@@ -53,15 +53,46 @@ int buscaBinaria(int *V, int n, int chave){
     if (chave == V[meio])
     return meio;
     if (chave < V[meio])
-    final = meio - 1://busca nos valores menores
+    final = meio - 1;//busca nos valores menores
     else
     inicio = meio + 1;//busca nos valores maiores
   }
   return -1; //chave não encontrada
 }
 
+int buscaSequencial(int *V, int n, int chave) { //Ordenada
+  int p=0, posic = -1;
+  while(p < n && chave <= V[p]){
+    if(V[p]==chave){
+      posic = p;
+      break;
+    }
+  }
+  return posic; //chave não encontrada
+}
+
+int smallerIndex(int vet[], int tam, int ini){
+ int min = ini, j;
+  for(j=ini+1; j<tam; j++){
+    if(vet[min] > vet[j])
+    min = j;
+  }
+ return min;
+}
+
+void selectionSort(int vet[], int tam){
+ int i, min, aux;
+  for(i=0; i<tam; i++){
+  //Acha posicao do menor elemento a partir de i:
+  min = smallerIndex(vet, tam, i);
+  aux = vet[i];
+  vet[i] = vet[min];
+  vet[min] = aux;
+  }
+}
+
 int main () {
     BuscaIBGE();
-    informacoes();
+    informacoes(m);
     return 0;
 }
