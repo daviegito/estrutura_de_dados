@@ -9,28 +9,35 @@ Welcome to GDB Online.
 #include <stdio.h>
 #include <string.h>
 
-//Ordenar um vetor de caracteres
-int separa (char v[], int p, int r) {
-    int c = v[r]; // pivô
-    int t, j = p;
-    for (int k = p; k < r; ++k)
-        if (v[k] <= c) {
-            t = v[j], v[j] = v[k], v[k] = t;
-            ++j;
+int separa(char v[], int p, int r, long int *qt_trocas) {
+    char c = v[r];
+    int i = p;
+    
+    for(int j = p; j < r; j++) {
+        if(v[j] <= c) {
+            char temp = v[i];
+            v[i] = v[j];
+            v[j] = temp;
+            (*qt_trocas)++;
+            i++;
         }
-    t = v[j], v[j] = v[r], v[r] = t;
-    return j;
+    }
+    
+    char temp = v[i];
+    v[i] = v[r];
+    v[r] = temp;
+    (*qt_trocas)++;
+    
+    return i;
 }
 
 //Extrair quantas trocas de elemento foram feitas
 void quicksort (char v[], int p, int r, long int *qt_trocas){
-   long int i=0;
    if (p < r) {
-      int j = separa (v, p, r);
+      int j = separa (v, p, r, qt_trocas);
       quicksort (v, p, j-1, qt_trocas);
       quicksort (v, j+1, r, qt_trocas);
     } 
-    qt_trocas = &i;
 }
 
 int main() {
