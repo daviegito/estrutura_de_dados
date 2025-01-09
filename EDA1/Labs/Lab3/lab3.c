@@ -18,7 +18,7 @@ int separa(char v[], int p, int r, long int *qt_trocas) {
             char temp = v[i];
             v[i] = v[j];
             v[j] = temp;
-            (*qt_trocas)++;
+            (*qt_trocas)++; //incrementa a contagem de trocas
             i++;
         }
     }
@@ -26,7 +26,7 @@ int separa(char v[], int p, int r, long int *qt_trocas) {
     char temp = v[i];
     v[i] = v[r];
     v[r] = temp;
-    (*qt_trocas)++;
+    (*qt_trocas)++; //incrementa para a troca do pivô
     
     return i;
 }
