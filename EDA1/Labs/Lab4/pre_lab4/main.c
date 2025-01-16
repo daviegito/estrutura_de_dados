@@ -26,9 +26,9 @@ TNoI *CriaListaIndustria()
     FILE* parq;
     TCadastro pregaux;
     TNoI *plista, *pnovono;
+
 //Montando lista das Industrias:
-    
-    parq = fopen("/home/davi/studies/estrutura_de_dados/EDA1/Exercícios/estrutura_dados_linear/LABORATÓRIO Listas Encadeadas/Industria.txt", "r");
+    parq = fopen("/home/davi/studies/estrutura_de_dados/EDA1/Labs/Lab4/pre_lab4/Industria.txt", "r");
     if(parq==NULL)
         return NULL;
     
@@ -65,9 +65,9 @@ TNoC *CriaListaComercio()
     FILE* parq;
     TCadastro pregaux;
     TNoC *plista, *pnovono;
+
 //Montando lista do Comercio:
-    
-    parq = fopen("/home/davi/studies/estrutura_de_dados/EDA1/Exercícios/estrutura_dados_linear/LABORATÓRIO Listas Encadeadas/Comercio.txt", "r");
+    parq = fopen("/home/davi/studies/estrutura_de_dados/EDA1/Labs/Lab4/pre_lab4/Comercio.txt", "r");
     if(parq==NULL)
         return NULL;
     
@@ -109,9 +109,9 @@ int CriaListaServico(TDescritorS *pLSer)
     FILE* parq;
     TCadastro pregaux;
     TNoS *plista, *pnovono;
-//Montando lista do Comercio:
-    
-    parq = fopen("/home/davi/studies/estrutura_de_dados/EDA1/Exercícios/estrutura_dados_linear/LABORATÓRIO Listas Encadeadas/Servico.txt", "r");
+
+//Montando lista de Servico:    
+    parq = fopen("/home/davi/studies/estrutura_de_dados/EDA1/Labs/Lab4/pre_lab4/Servico.txt", "r");
     if(parq==NULL) {
         return NULL;
     }
@@ -127,7 +127,7 @@ int CriaListaServico(TDescritorS *pLSer)
     pnovono->Prox = plista;
     plista = pnovono;    
     }
-    if() {
+    if(plista != NULL) {
         return 1;
     } 
     else {
@@ -137,10 +137,13 @@ int CriaListaServico(TDescritorS *pLSer)
 
 //Listar Conteúdo da lista Servico:
 void ImprimeServico(TDescritorS *pdescritor){
-    //Complete o código...
-    
-    
-    //######################
+    TNoS *plista = LSer;
+    printf("                     LISTA DE SERVICOS\n");
+    printf("CNPJ            Razao Social                Cidade      Telefone\n");
+    while(plista != NULL) {
+        printf("%s\t%s\t%s\t%s\n", plista->Dados->CNPJ, plista->Dados->RazaoSocial, plista->Dados->Cidade, plista->Dados->Fone);
+        plista = plista->Prox;
+    }
 }
  
 /*
