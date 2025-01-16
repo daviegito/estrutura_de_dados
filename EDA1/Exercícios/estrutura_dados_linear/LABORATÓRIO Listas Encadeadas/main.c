@@ -11,8 +11,8 @@
 //  Created by Nilton Correia da Silva on 01/05/17.
 //  Copyright © 2017 Nilton Correia da Silva. All rights reserved.
 //
-//Aluno:
-//Matrícula:
+//Aluno: Davi Marques do Egito Coelho
+//Matrícula: 231030421
 //
 
 #include <stdio.h>
@@ -28,7 +28,7 @@ TNoI *CriaListaIndustria()
     TNoI *plista, *pnovono;
 //Montando lista das Industrias:
     
-    parq = fopen("/Users/niltonsilva/OneDrive/Sync/Nilton/UnB/2017_1/Disciplinas/EDA/Aulas/17_Atividade2/Industria.txt", "r");
+    parq = fopen("/home/davi/studies/estrutura_de_dados/EDA1/Exercícios/estrutura_dados_linear/LABORATÓRIO Listas Encadeadas/Industria.txt", "r");
     if(parq==NULL)
         return NULL;
     
@@ -58,35 +58,81 @@ void ImprimeIndustria(TNoI *LInd){
     }
 }
 
-/*
-
 //Criar lista Comercio a partir do arquivo Comercio.txt
 TNoC *CriaListaComercio()
 {
 //Complete o código...
+    FILE* parq;
+    TCadastro pregaux;
+    TNoC *plista, *pnovono;
+//Montando lista do Comercio:
     
+    parq = fopen("/home/davi/studies/estrutura_de_dados/EDA1/Exercícios/estrutura_dados_linear/LABORATÓRIO Listas Encadeadas/Comercio.txt", "r");
+    if(parq==NULL)
+        return NULL;
     
-    
-//######################
+    plista = NULL;
+    while(fscanf(parq,"%s %s %s %s", pregaux.CNPJ, pregaux.RazaoSocial, pregaux.Cidade, pregaux.Fone)>0) {
+        pnovono = (TNoC *)malloc(sizeof(TNoC));
+        pnovono->Dados = (TCadastro *)malloc(sizeof(TCadastro));
+        strcpy(pnovono->Dados->CNPJ, pregaux.CNPJ);
+        strcpy(pnovono->Dados->RazaoSocial, pregaux.RazaoSocial);
+        strcpy(pnovono->Dados->Cidade, pregaux.Cidade);
+        strcpy(pnovono->Dados->Fone, pregaux.Fone);
+        pnovono->Prox = plista;
+        plista = pnovono;
+    }
+
+    return plista;        
 }
+
+//######################
 
 //Listar Conteúdo da lista Comercio:
 void ImprimeComercio(TNoC *LCom){
-//Complete o código...
-
+    TNoC *plista = LCom;
+    printf("                     LISTA DE COMERCIOS\n");
+    printf("CNPJ            Razao Social                Cidade      Telefone\n");
+    while(plista != NULL) {
+        printf("%s\t%s\t%s\t%s\n", plista->Dados->CNPJ, plista->Dados->RazaoSocial, plista->Dados->Cidade, plista->Dados->Fone);
+        plista = plista->Prox;
+    }
+}
     
 //######################
-}
 
 //Criar lista Servico (atualizando o parâmetro por referência pLSer) a partir do arquivo Servico.txt
 //Deve retornar 1 caso tenha sucesso. 0 caso contrário
 int CriaListaServico(TDescritorS *pLSer)
 {
     //Complete o código...
+    FILE* parq;
+    TCadastro pregaux;
+    TNoS *plista, *pnovono;
+//Montando lista do Comercio:
     
-    
-    
-    //######################
+    parq = fopen("/home/davi/studies/estrutura_de_dados/EDA1/Exercícios/estrutura_dados_linear/LABORATÓRIO Listas Encadeadas/Servico.txt", "r");
+    if(parq==NULL) {
+        return NULL;
+    }
+
+    plista = NULL;
+    while(fscanf(parq,"%s %s %s %s", pregaux.CNPJ, pregaux.RazaoSocial, pregaux.Cidade, pregaux.Fone)>0) {
+    pnovono = (TNoC *)malloc(sizeof(TNoC));
+    pnovono->Dados = (TCadastro *)malloc(sizeof(TCadastro));
+    strcpy(pnovono->Dados->CNPJ, pregaux.CNPJ);
+    strcpy(pnovono->Dados->RazaoSocial, pregaux.RazaoSocial);
+    strcpy(pnovono->Dados->Cidade, pregaux.Cidade);
+    strcpy(pnovono->Dados->Fone, pregaux.Fone);
+    pnovono->Prox = plista;
+    plista = pnovono;    
+    }
+    if() {
+        return 1;
+    } 
+    else {
+        return 0;
+    }
 }
 
 //Listar Conteúdo da lista Servico:
@@ -97,7 +143,7 @@ void ImprimeServico(TDescritorS *pdescritor){
     //######################
 }
  
-
+/*
 
 
 //Criar lista Unificada (atualizando o parâmetro por referência pUnica) a partir das listas Industria, Comercio e Servico
