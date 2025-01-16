@@ -1,0 +1,1 @@
+5. Diga  se  houve  alteração  da  complexidade  das  funções  do  exercício  anterior  em  relação  às  respectivas funções do exercício 1 e 2. Em que casos há ganho em se utilizar o tipo TLista em lugar do tipo TNo para representar uma lista encadeada?
