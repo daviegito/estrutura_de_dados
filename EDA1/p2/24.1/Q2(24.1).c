@@ -1,3 +1,8 @@
+//a chave é a letra correspondente aos 2 últimos dígitos da matrícula
+//no caso, 21+1(a inicia em zero) = 22 ("v")
+//depois o programa procura v na string antes do espaço
+//e retorna a posição. No caso de Davi, "v" está na posic 2.
+
 #include <stdio.h>
 
 char letra(int P)
