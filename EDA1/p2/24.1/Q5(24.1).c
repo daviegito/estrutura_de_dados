@@ -21,9 +21,9 @@ int Q5(char vetor[], int tamanho){
     return trocas;
 }
 
-// Qual o valor de R?
-// Qual o valor de nome?
-// Qual tipo de ordenacao da funcao q4?
+// Qual o valor de R? 4
+// Qual o valor de nome? cehloo
+// Qual tipo de ordenacao da funcao q5? Insertion Sort 
 
 int main(){
     char nc[] = "coelho";

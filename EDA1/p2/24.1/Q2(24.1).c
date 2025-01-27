@@ -7,7 +7,7 @@
 
 char letra(int P)
 {
-    P = P % 26; // 78/26, 26+26 = 52 + 26 = 78
+    P = P % 26; //dá 0 e sobra 21
     return 'a' + P; // 'a' + 0 = a;
 }
 int Q2(char *nc, int matricula)
