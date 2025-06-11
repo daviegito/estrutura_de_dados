@@ -11,14 +11,19 @@ elemento no início da fila. Se a fila estiver vazia, ele deve retornar None.
 class Fila:
     def __init__(self):
         self.fila = ()
+
     def enqueue(self, elemento):
-        fila = fila + (elemento,)               
+        self.fila = self.fila + (elemento,)
+
     def dequeue(self):
-        if fila != []:
-            fila = fila[1:]
-            return fila[0]
-        else: 
+        if len(self.fila) == 0:
             return None
+        elemento_removido = self.fila[0]
+        self.fila = self.fila[1:]
+        return elemento_removido
+
 fila_random = Fila()
-fila_random.enqueue((5,4,2,3,4))
-fila_random.dequeue()
+fila_random.enqueue(5)
+fila_random.enqueue(4)
+fila_random.enqueue(3)
+print(fila_random.dequeue())
