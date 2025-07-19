@@ -5,21 +5,21 @@
 #include <stdlib.h>
 
 // Função recursiva para intercalar os elementos de dois vetores char
-void IntercalaVetores(char *V1, char *V2, char *V3) {
+void IntercalaVetores(char *V1, char *V2, char V3) {
     int pinc1 = 0, pinc2 = 0; // Variáveis para controlar o incremento de V1 e V2
     if (*V1 == '\0' && *V2 == '\0') { // Caso base: ambos os vetores estão vazios
-        *V3 = '\0'; // Termina V3 com o caractere nulo
+        V3 = '\0'; // Termina V3 com o caractere nulo
         return;
     }
 
     if (*V1 != '\0') { // Se V1 ainda tem elementos
-        *V3 = *V1; // Coloca o caractere atual de V1 em V3
-        V3++; // Incrementa o ponteiro de V3    
+        V3 = *V1; // Coloca o caractere atual de V1 em V3
+        V3++; // Incrementa o ponteiro de V3
         pinc1 = 1;
     }
 
     if (*V2 != '\0') { // Se V2 ainda tem elementos
-        *V3 = *V2; // Coloca o caractere atual de V2 em V3
+        V3 = *V2; // Coloca o caractere atual de V2 em V3
         V3++; // Incrementa o ponteiro de V3
         pinc2 = 1;
     }
@@ -37,7 +37,7 @@ int main() {
     scanf("%s", V1);
     printf("Digite a segunda palavra: ");
     scanf("%s", V2);
-    IntercalaVetores(V1, V2, V3);  
-    printf("Intercalacao: %s\n", V3); 
+    IntercalaVetores(&V1, &V2, V3);
+    printf("Intercalacao: %s\n", V3);
     return 0;
 }
