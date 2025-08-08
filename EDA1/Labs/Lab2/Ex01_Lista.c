@@ -1,4 +1,4 @@
-/* Dado um vetor de números reais e o seu número de elementos, fazer uma função recursiva que calcula 
+/* Dado um vetor de números reais e o seu número de elementos, fazer uma função recursiva que calcula
 a média dos elementos do vetor*/
 
 #include <stdio.h>
