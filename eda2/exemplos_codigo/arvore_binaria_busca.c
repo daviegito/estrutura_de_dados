@@ -9,7 +9,7 @@ typedef struct celula {
 celula *cria_abb(int x) {
   celula *raiz = malloc(sizeof(celula));
   raiz -> esq = raiz -> dir = NULL;
-  raiz -> dado = x;
+  raiz -> dado = x; //x é o que quer se inserir na árvore
   return raiz;
 }
 
@@ -29,9 +29,9 @@ celula *buscar(celula *raiz, int x) {
 celula *inserir(celula *raiz, int x) {
   if(raiz!=NULL) {
     if(x<raiz->dado)
-      raiz->esq = inserir(raiz->esq,x);
+      raiz->esq = inserir(raiz->esq,x); //valores menores à esquerda
     else if(x>raiz->dado)
-      raiz->dir = inserir(raiz->dir,x);
+      raiz->dir = inserir(raiz->dir,x); //valores maiores à direita
     return raiz;
   } else {
     return cria_abb(x);
