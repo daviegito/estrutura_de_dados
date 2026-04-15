@@ -20,10 +20,12 @@ celula *cria_abb(int x) {
 
 celula *insere_rne(celula *raiz, int x) {
   if (raiz != NULL){
+    //operação de busca
     if (x<raiz->dado)
       raiz->esq = insere_rne(raiz->esq,x);
     else if (x>raiz->dado)
       raiz->dir = insere_rne(raiz->dir,x);
+    //operações de correção caso haja desbalanço
     if (ehPreto(raiz->esq) && ehVermelho(raiz->dir))
       raiz = rotacao_a_esquerda(raiz);
     if (ehPreto(raiz) && ehVermelho(raiz->esq) && ehVermelho(raiz->esq->esq))
