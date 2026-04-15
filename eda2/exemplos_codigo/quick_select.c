@@ -1,7 +1,7 @@
 int separa (int *v, int e, int d) {
-  int j = e, k = e;
+  int j = e, k = e, p = v[d];
   while(k<d) {
-    if (v[k] <= p) {
+    if (v[k] <= p) { //pivô
       int tmp = v[k];
       v[k] = v[j];
       v[j] = tmp; //guardar a variável temporária
@@ -21,4 +21,9 @@ void quickselect(int *v, int e, int d, int k) {
     if (k<j) quickselect(v,e,j-1,k);
     if (k>j) quickselect(v,j+1,d,k);
   }
+}
+
+int main() {
+  //pedir para imprimir a array no futuro
+  return 0;
 }
