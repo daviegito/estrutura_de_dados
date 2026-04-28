@@ -88,3 +88,27 @@ void sobe_no_heap(Fp *f, int k){
   }
 }
 
+int extrai_maximo(Fp *f){
+// se n = 0, a função pode não retornar nada, então seria bom uma flag que desse 0 ou 1 a depender se n = 0
+  if(f->n>0){
+    int max = f -> dado[0];
+    f->dado[0] = f->dado[f->n-1];
+    f->n--;
+    desce_no_heap(f,0);
+    return max;
+  }
+}
+
+void desce_no_heap(Fp *f,int k){
+  int esq = 2*k+1;
+  if(esq<f->n){
+    int maior_filho=esq;
+    int dir = esq+1;
+    if(dir<f->n && f->dado[dir]>f->dado[esq])
+      maior_filho=dir;
+    if(f->dado[k]<f->dado[maior_filho]){
+      troca(&f->dado[k], &f->dado[maior_filho]);
+    desce_no_heap(f,maior_filho);
+    }
+  }
+}
