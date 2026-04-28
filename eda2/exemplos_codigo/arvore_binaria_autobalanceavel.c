@@ -48,3 +48,43 @@ celula *insere(celula *raiz, int x){
   raiz -> cor = p;
   return raiz;
 }
+
+// --- Heap
+typedef struct {
+  int *dado; //vetor que representa a árvore
+  int n, tam; //n é a quantidade de elementos e o tamanho é do vetor
+} Fp;
+
+Fp *cria-fp(int tam){
+  Fp *f = malloc(sizeod(Fp));
+  f->dado = malloc(sizeof(int)*tam);
+  f->n = 0;
+  f->tam = tam;
+  return f;
+}
+
+void destroi-fp(Fp *f) {
+  free(f -> dado);
+  free(f);
+}
+
+void insere(Fp *f, int x) {
+  if(f->n >= f -> tam) {
+    f->dado = realloc(f->dado,2*f->tam*sizeof(int));
+    f->tam*=2;
+  }
+  f->dado[f->n]=x;
+  f->n++;
+  sobe_no_heap(f, f->n-1);
+}
+
+void sobe_no_heap(Fp *f, int k){
+  if(k>0){
+    int pai = (k-1)/2;
+    if(f->dado[pai]<f->dado[k]){
+      troca(&f->dado[pai],f->dado+k);
+      sobe_no_heap(f,pai);
+    }
+  }
+}
+
