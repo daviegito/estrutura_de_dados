@@ -56,7 +56,7 @@ typedef struct {
 } Fp;
 
 Fp *cria-fp(int tam){
-  Fp *f = malloc(sizeod(Fp));
+  Fp *f = malloc(sizeof(Fp));
   f->dado = malloc(sizeof(int)*tam);
   f->n = 0;
   f->tam = tam;
@@ -111,4 +111,42 @@ void desce_no_heap(Fp *f,int k){
     desce_no_heap(f,maior_filho);
     }
   }
+}
+
+// Hash
+
+typedef struct celula{ //inclui as informações dos objetos
+  int chave;
+  struct celula *prox;
+} celula;
+
+typedef struct {
+  celula **tab; //a tabela será um vetor de ponteiros
+  int m;
+} hash;
+
+hash *cria_hash(int m){
+  hash *h = malloc(sizeof(hash));
+  h->m=m;
+  h->tab=malloc(sizeof)
+  for(int i=0;i<m;i++){
+    h->tab[i]=malloc(sizeof(celula));
+    h->tab[i]->prox=NULL;
+  }
+  return h;
+}
+
+void destroi_hash(hash *h){
+  for(int i=0; i<h->m;i++) destroi_lista(h->tab[i]); //recebe uma lista encadeada com nó na cabeça e desaloca todos os nós
+  free(h->tab);
+  free(h);
+}
+
+void inserir(hash *h, int ch){
+  int pos = fhash(h, ch);
+  inserir_lista(h->tab[pos],ch); //Insere ch na lista encadeada, mas antes verifica se já não está na lista
+}
+
+int fhash(hash *h, int ch){
+  return ch%h->m;
 }
